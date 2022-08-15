@@ -1,0 +1,16 @@
+{
+  "name": "amazon_store_back",
+  "version": "1.0.0",
+  "description": "Backend of a clone of Amazon store",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Amazon",
+    "store",
+    "apps"
+  ],
+  "author": "Jose Galdamez <josegaldamez1991@gmail.com>",
+  "license": "MIT"
+}
