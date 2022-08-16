@@ -1,13 +1,16 @@
 const express = require("express");
 const cors = require("cors");
-const router = require("../routes/apps");
 const { json } = require("express");
+const appRouter = require("../routes/apps");
+const commentsRouter = require("../routes/comments");
+const config = require("../config/config");
 
 class Server {
   constructor() {
     this.app = express();
-    this.port = process.env.PORT;
-    this.applicationPath = "/api/apps";
+    this.port = config.port;
+    this.appsPath = "/api/apps";
+    this.commentsPath = "/api/comments";
 
     // Middlewares
     this.middlewares();
@@ -23,7 +26,8 @@ class Server {
   }
 
   routes() {
-    this.app.use(this.applicationPath, router);
+    this.app.use(this.appsPath, appRouter);
+    this.app.use(this.commentsPath, commentsRouter);
   }
 
   listen() {

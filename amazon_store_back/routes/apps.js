@@ -1,18 +1,13 @@
 const { Router } = require("express");
-const {
-  getApps,
-  postApps,
-  updateApps,
-  deleteApps,
-  patchApps,
-} = require("../controllers/apps");
+const appRouter = Router();
 
-const router = Router();
+const AppsController = require("../controllers/apps");
+const controller = new AppsController();
 
-router.get("/", getApps);
-router.post("/", postApps);
-router.put("/:id", updateApps);
-router.patch("/:id", patchApps);
-router.delete("/:id", deleteApps);
+appRouter.get("/", controller.getApps);
+appRouter.post("/", controller.postApps);
+appRouter.put("/:id", controller.updateApps);
+appRouter.patch("/:id", controller.patchApps);
+appRouter.delete("/:id", controller.deleteApps);
 
-module.exports = router;
+module.exports = appRouter;

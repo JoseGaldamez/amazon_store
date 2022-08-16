@@ -1,32 +1,36 @@
 const { response, request } = require("express");
+const sequelize = require("../libs/sequelize");
 
-const getApps = (req = request, res = response) => {
-  res.status(200).json({ msg: "Hola Get - Controller" });
-};
+class AppsController {
+  constructor() {}
 
-const postApps = (req, res = response) => {
-  const { name, price } = req.body;
-  res.status(201).json({ msg: "Hola POST - Controller", name, price });
-};
+  // Get All Apps
+  getApps = async (req = request, res = response) => {
+    const apps = await sequelize.models.Apps.findAll();
+    res.json({ ok: true, apps });
+  };
 
-const updateApps = (req, res = response) => {
-  const { id } = req.params;
+  // Create New App
+  postApps = (req = request, res = response) => {
+    res.json({ ok: true });
+  };
 
-  res.status(200).json({ msg: "Hola UPDATE - Controller", id });
-};
+  // Update App
+  updateApps = (req, res = response) => {
+    const { id } = req.params;
 
-const patchApps = (req, res = response) => {
-  res.status(200).json({ msg: "Hola PATCH - Controller" });
-};
+    res.status(200).json({ msg: "Hola UPDATE - Controller", id });
+  };
 
-const deleteApps = (req, res = response) => {
-  res.status(200).json({ msg: "Hola DELETE - Controller" });
-};
+  // Update a field of an App
+  patchApps = (req, res = response) => {
+    res.status(200).json({ msg: "Hola PATCH - Controller" });
+  };
 
-module.exports = {
-  getApps,
-  postApps,
-  updateApps,
-  patchApps,
-  deleteApps,
-};
+  // Delete App
+  deleteApps = (req, res = response) => {
+    res.status(200).json({ msg: "Hola DELETE - Controller" });
+  };
+}
+
+module.exports = AppsController;
