@@ -12,6 +12,10 @@ const AppsSchema = {
     allowNull: false,
     type: DataTypes.STRING,
   },
+  image: {
+    allowNull: false,
+    type: DataTypes.STRING,
+  },
   description: {
     allowNull: false,
     type: DataTypes.STRING,
@@ -28,9 +32,9 @@ const AppsSchema = {
     allowNull: false,
     type: DataTypes.STRING,
   },
-  qualification: {
+  installed: {
     allowNull: false,
-    type: DataTypes.INTEGER,
+    type: DataTypes.BOOLEAN,
   },
   createdAt: {
     allowNull: false,
@@ -43,6 +47,10 @@ const AppsSchema = {
 class Apps extends Model {
   static associate(models) {
     // models
+    this.hasMany(models.Comments, {
+      as: "comments",
+      foreignKey: "app_id",
+    });
   }
 
   static config(sequelize) {

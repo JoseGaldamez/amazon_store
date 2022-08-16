@@ -1,29 +1,45 @@
 const { response, request } = require("express");
+const sequelize = require("../libs/sequelize");
 
 class CommentsController {
   constructor() {}
 
-  getComments = (req = request, res = response) => {
-    res.status(200).json({ msg: "Hola Get - Controller" });
+  getComments = async (req = request, res = response) => {
+    const comments = await sequelize.models.Comments.findAll();
+    res.status(200).json({ ok: true, comments });
   };
 
-  postComments = (req, res = response) => {
-    const { name, price } = req.body;
-    res.status(201).json({ msg: "Hola POST - Controller", name, price });
+  postComments = async (req = request, res = response) => {
+    const { appId } = req.body;
+    const app = await sequelize.models.Apps.findByPk(appId);
+    if (!app) {
+      res.status(404).json({ ok: false, message: "App not found" });
+    } else {
+      const newComment = await sequelize.models.Comments.create(req.body);
+      res.status(201).json({ ok: true, newComment });
+    }
   };
 
-  updateComments = (req, res = response) => {
+  updateComments = async (req, res = response) => {
     const { id } = req.params;
-
-    res.status(200).json({ msg: "Hola UPDATE - Controller", id });
+    const comment = await sequelize.models.Comments.findByPk(id);
+    if (!comment) {
+      res.status(404).json({ ok: false, message: "Comment not found" });
+    } else {
+      const updatedComment = await comment.update(req.body);
+      res.status(200).json({ ok: true, updatedComment });
+    }
   };
 
-  patchComments = (req, res = response) => {
-    res.status(200).json({ msg: "Hola PATCH - Controller" });
-  };
-
-  deleteComments = (req, res = response) => {
-    res.status(200).json({ msg: "Hola DELETE - Controller" });
+  deleteComments = async (req, res = response) => {
+    const { id } = req.params;
+    const comment = await sequelize.models.Comments.findByPk(id);
+    if (!comment) {
+      res.status(404).json({ ok: false, message: "Comment not found" });
+    } else {
+      await comment.destroy();
+      res.status(200).json({ ok: true, id });
+    }
   };
 }
 

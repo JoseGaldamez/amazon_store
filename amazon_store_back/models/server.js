@@ -4,6 +4,8 @@ const { json } = require("express");
 const appRouter = require("../routes/apps");
 const commentsRouter = require("../routes/comments");
 const config = require("../config/config");
+const ratingRouter = require("../routes/ratings");
+const downloadRouter = require("../routes/downloads");
 
 class Server {
   constructor() {
@@ -11,6 +13,8 @@ class Server {
     this.port = config.port;
     this.appsPath = "/api/apps";
     this.commentsPath = "/api/comments";
+    this.ratingPath = "/api/ratings";
+    this.downloadsPath = "/api/downloads";
 
     // Middlewares
     this.middlewares();
@@ -28,6 +32,8 @@ class Server {
   routes() {
     this.app.use(this.appsPath, appRouter);
     this.app.use(this.commentsPath, commentsRouter);
+    this.app.use(this.ratingPath, ratingRouter);
+    this.app.use(this.downloadsPath, downloadRouter);
   }
 
   listen() {
