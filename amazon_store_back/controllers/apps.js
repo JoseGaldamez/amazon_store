@@ -7,7 +7,7 @@ class AppsController {
   // Get All Apps
   getApps = async (req = request, res = response) => {
     const apps = await sequelize.models.Apps.findAll({
-      include: ["comments"],
+      include: ["comments", "ratings", "screenshots"],
     });
 
     res.json({ ok: true, apps });

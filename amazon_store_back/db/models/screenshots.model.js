@@ -1,17 +1,17 @@
 const { Model, Sequelize, DataTypes } = require("sequelize");
 const { APPS_TABLE } = require("./apps.model");
 
-const RATINGS_TABLE = "ratings";
-const RatingsSchema = {
+const SCREENSHOTS_TABLE = "screenshots";
+const ScreenshotSchema = {
   id: {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
     type: DataTypes.INTEGER,
   },
-  rating: {
+  url: {
     allowNull: false,
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   },
   appId: {
     allowNull: false,
@@ -32,7 +32,7 @@ const RatingsSchema = {
   },
 };
 
-class Ratings extends Model {
+class Screenshots extends Model {
   static associate(models) {
     // models
   }
@@ -40,15 +40,15 @@ class Ratings extends Model {
   static config(sequelize) {
     return {
       sequelize,
-      tableName: RATINGS_TABLE,
-      modelName: "Ratings",
+      tableName: SCREENSHOTS_TABLE,
+      modelName: "Screenshots",
       timestamps: false,
     };
   }
 }
 
 module.exports = {
-  RATINGS_TABLE,
-  RatingsSchema,
-  Ratings,
+  SCREENSHOTS_TABLE,
+  ScreenshotSchema,
+  Screenshots,
 };

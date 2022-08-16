@@ -51,6 +51,14 @@ class Apps extends Model {
       as: "comments",
       foreignKey: "app_id",
     });
+    this.hasMany(models.Ratings, {
+      as: "ratings",
+      foreignKey: "app_id",
+    });
+    this.hasMany(models.Screenshots, {
+      as: "screenshots",
+      foreignKey: "app_id",
+    });
   }
 
   static config(sequelize) {
