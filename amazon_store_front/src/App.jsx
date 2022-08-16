@@ -9,16 +9,33 @@ import "./App.css";
 
 export const App = () => {
   const [apps, setApps] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [category, setCategory] = useState("All");
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetch("http://localhost:8080/api/apps");
-      const jsonData = await data.json();
-      setApps(jsonData.apps);
-    };
+    setLoading(true);
 
-    fetchData();
-  }, []);
+    if (category === "All") {
+      setLoading(true);
+      const fetchData = async () => {
+        const data = await fetch("http://localhost:8080/api/apps");
+        const jsonData = await data.json();
+        setApps(jsonData.apps);
+        setLoading(false);
+      };
+      fetchData();
+    } else {
+      const fetchData = async () => {
+        const data = await fetch(
+          `http://localhost:8080/api/apps/category/${category}`
+        );
+        const jsonData = await data.json();
+        setApps(jsonData.apps);
+        setLoading(false);
+      };
+      fetchData();
+    }
+  }, [category]);
 
   return (
     <>
@@ -27,8 +44,15 @@ export const App = () => {
       </Navbar>
 
       <main role="main" className="container">
-        <SelectCategory />
-        <ListOfApps apps={apps} />
+        <SelectCategory setCategory={setCategory} />
+        {loading && (
+          <div className="container text-center mt-5">Loading...</div>
+        )}
+        {!apps.length > 0 && !loading ? (
+          <div className="container text-center mt-5">No apps found</div>
+        ) : (
+          <ListOfApps apps={apps} />
+        )}
       </main>
     </>
   );

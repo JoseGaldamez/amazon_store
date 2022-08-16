@@ -1,0 +1,23 @@
+.starts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    border-bottom: solid 1px #ebebeb;
+}
+
+.starts svg{
+    display: inline-block;
+    margin-left: 5px;
+}
+
+
+.starts .starts-number{
+    padding-left: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color:green;
+}

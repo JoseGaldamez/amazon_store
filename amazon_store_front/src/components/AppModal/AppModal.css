@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.8);
     z-index: 9999;
 }
 
@@ -42,7 +42,14 @@
 .app-info__modal h4{
     font-size: 1.1rem;
     margin: 0px;
-    margin-top: 15px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.app-info__modal h5{
+    font-size: 0.9rem;
+    margin: 0px;
+    margin-top: 5px;
     font-weight: bold;
 }
 

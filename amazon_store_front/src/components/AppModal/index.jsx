@@ -1,6 +1,7 @@
 import React from "react";
 import { CarruselScreenshots } from "../CarruselScreenshots";
-import { StartsGreen } from "../StartsGreen";
+import { Comments } from "../Comments";
+import { Starts } from "../Starts";
 
 import "./AppModal.css";
 const urlBase = "http://localhost:8080/app-icons/";
@@ -24,11 +25,13 @@ export const AppModal = ({ app, setShowModal }) => {
                 <h4>{app.appname}</h4>
                 <small>{app.developer}</small>
                 <p>{app.description}</p>
+                <h5>{app.price < 0.5 ? "FREE" : `$ ${app.price}`}</h5>
               </div>
             </div>
           </div>
           {/* end container info */}
-          <StartsGreen ratings={app.ratings} />
+          <Starts ratings={app.ratings} />
+          <Comments comments={app.comments} />
         </div>
 
         <div className="app-info__footer">

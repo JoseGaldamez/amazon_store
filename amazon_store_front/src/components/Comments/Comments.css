@@ -1,0 +1,23 @@
+.comment{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #f1f1f1;
+}
+
+.comment .comment-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 1em;
+}
+
+.comment .comment-text h5{
+    font-size: 0.9rem;
+    margin: 0px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.comment .comment-text p{
+    font-size: 0.8rem;
+}

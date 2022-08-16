@@ -20,7 +20,9 @@ const AppCard = ({ app, handleShowModal }) => {
           <h3>{app.appname}</h3>
           <small>{app.developer}</small>
           <div>starts</div>
-          <div className="app-card__info___price">$ {app.price}</div>
+          <div className="app-card__info___price">
+            {app.price < 0.5 ? "FREE" : `$ ${app.price}`}
+          </div>
         </div>
       </div>
     </>

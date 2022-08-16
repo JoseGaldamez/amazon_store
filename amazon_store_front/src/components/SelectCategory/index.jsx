@@ -2,20 +2,11 @@ import React, { useState } from "react";
 
 import "./SelectCategory.css";
 
-export const SelectCategory = () => {
-  const [categories, setCategories] = useState([
-    "All Categories",
-    "Games",
-    "Music",
-    "Movies",
-    "Books",
-    "Apps",
-  ]);
+const categories = ["All", "Games", "Music", "Movies", "Books", "Apps"];
 
-  const [categorySelected, setCategorySelected] = useState("All");
-
+export const SelectCategory = ({ setCategory }) => {
   const handleChange = (e) => {
-    setCategorySelected(e.target.value);
+    setCategory(e.target.value);
   };
 
   return (
