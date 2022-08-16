@@ -1,9 +1,14 @@
 import React from "react";
+import AppCard from "../AppCard";
 
-export const ListOfApps = () => {
+import "./ListOfApps.css";
+
+export const ListOfApps = ({ apps }) => {
   return (
-    <div>
-      <h1>List of Apps</h1>
+    <div className="grid-apps">
+      {apps.map((app) => (
+        <AppCard key={app.id} app={app} />
+      ))}
     </div>
   );
 };
