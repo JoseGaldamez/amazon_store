@@ -11,25 +11,33 @@ class AppsController {
   };
 
   // Create New App
-  postApps = (req = request, res = response) => {
-    res.json({ ok: true });
+  postApps = async (req = request, res = response) => {
+    const newApp = await sequelize.models.Apps.create(req.body);
+    res.json({ ok: true, newApp });
   };
 
   // Update App
-  updateApps = (req, res = response) => {
+  updateApps = async (req = request, res = response) => {
     const { id } = req.params;
-
-    res.status(200).json({ msg: "Hola UPDATE - Controller", id });
-  };
-
-  // Update a field of an App
-  patchApps = (req, res = response) => {
-    res.status(200).json({ msg: "Hola PATCH - Controller" });
+    const app = await sequelize.models.Apps.findByPk(id);
+    if (!app) {
+      res.status(404).json({ ok: false, message: "App not found" });
+    } else {
+      const updatedApp = await app.update(req.body);
+      res.status(200).json(updatedApp);
+    }
   };
 
   // Delete App
-  deleteApps = (req, res = response) => {
-    res.status(200).json({ msg: "Hola DELETE - Controller" });
+  deleteApps = async (req = request, res = response) => {
+    const { id } = req.params;
+    const app = await sequelize.models.Apps.findByPk(id);
+    if (!app) {
+      res.status(404).json({ ok: false, message: "App not found" });
+    } else {
+      await app.destroy();
+      res.status(200).json({ ok: true, idDeleted: id });
+    }
   };
 }
 
