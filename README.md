@@ -22,6 +22,8 @@ First you need to install the node modules and the dependencies of both the serv
     npm install
 ```
 
+Dont forget configure the environment variables in the .env file. When you are done you can continue.
+
 ## Run
 Once you have the server and the client installed you can run the server and the client.
 > server

@@ -54,6 +54,12 @@ class AppsController {
 
   fillAppsToDB = async (req = request, res = response) => {
     const categories = await sequelize.models.Categories.findAll();
+    if (categories.length === 0) {
+      return res.status(404).json({
+        ok: false,
+        message: "Categories not found, add some categories before",
+      });
+    }
 
     for (let index = 1; index <= 50; index++) {
       await sequelize.models.Apps.create({
