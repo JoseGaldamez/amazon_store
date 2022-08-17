@@ -1,17 +1,23 @@
 .starts{
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 10px 20px;
-    border-radius: 5px;
-    overflow: hidden;
     border-bottom: solid 1px #ebebeb;
+}
+
+.center{
+    justify-content: center;
+    padding: 10px 20px;
+}
+
+.left{
+    justify-content: flex-start;
+    padding-bottom: 5px;
 }
 
 .starts svg{
     display: inline-block;
-    margin-left: 5px;
+    margin-right: 5px;
 }
 
 

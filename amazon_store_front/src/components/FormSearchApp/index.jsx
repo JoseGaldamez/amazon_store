@@ -1,12 +1,23 @@
 import React from "react";
 import { FaSistrix } from "react-icons/fa";
 
-export const FormSearchApp = () => {
+export const FormSearchApp = ({ handleSearch }) => {
   return (
-    <form className="form-inline my-2 my-lg-0">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSearch(e.target.search.value);
+      }}
+      className="form-inline my-2 my-lg-0"
+      onChange={() => {
+        handleSearch(document.getElementById("search").value);
+      }}
+    >
       <input
         className="form-control mr-sm-2"
         type="text"
+        id="search"
+        name="search"
         placeholder="Search"
         aria-label="Search"
       />

@@ -14,11 +14,13 @@ export const ListOfApps = ({ apps }) => {
   };
 
   return (
-    <div className="grid-apps">
-      {apps.map((app) => (
-        <AppCard key={app.id} app={app} handleShowModal={handleShowModal} />
-      ))}
-      {showModal && <AppModal app={seletedApp} setShowModal={setShowModal} />}
-    </div>
+    <>
+      <div className="grid-apps">
+        {apps.map((app) => (
+          <AppCard key={app.id} app={app} handleShowModal={handleShowModal} />
+        ))}
+        {showModal && <AppModal app={seletedApp} setShowModal={setShowModal} />}
+      </div>
+    </>
   );
 };

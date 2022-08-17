@@ -3,7 +3,13 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 
 import "./Starts.css";
 
-export const Starts = ({ ratings }) => {
+export const Starts = ({
+  ratings,
+  color = "green",
+  size = 20,
+  showNumber = true,
+  align = "center",
+}) => {
   const [start, setStart] = useState(0);
 
   useEffect(() => {
@@ -19,16 +25,17 @@ export const Starts = ({ ratings }) => {
       setStart(Math.floor(average));
     }
   }, []);
+
   return (
-    <div className="starts">
+    <div className={`starts ${align}`}>
       {[...Array(5)].map((n, i) =>
         i < start ? (
-          <FaStar key={`start-${i}`} color="green" size={20} />
+          <FaStar key={`start-${i}`} color={color} size={size} />
         ) : (
-          <FaRegStar key={`start-${i}`} color="green" size={20} />
+          <FaRegStar key={`start-${i}`} color={color} size={size} />
         )
       )}
-      <span className="starts-number">{start.toFixed(1)}</span>
+      {showNumber && <span className="starts-number">{start.toFixed(1)}</span>}
     </div>
   );
 };
