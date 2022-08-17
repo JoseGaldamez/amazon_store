@@ -50,7 +50,7 @@ Then you can run the client in production mode to deploy in the cloud or other s
 
 ## Fill database with apps
 
-With a application like **Postman** or a browser you can fill the database with apps using the endpoint:
+With a application like **Postman** or a browser you can fill the database with apps using the endpoint, but dont forget to add some categories before, the endpoint "fill" will take those categories to add them to apps randomly.
 
 ```
     http://localhost:8080/api/apps/fill
