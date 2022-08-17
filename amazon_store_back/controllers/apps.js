@@ -1,4 +1,5 @@
 const { response, request } = require("express");
+const { validationResult } = require("express-validator");
 const sequelize = require("../libs/sequelize");
 
 class AppsController {
@@ -52,6 +53,8 @@ class AppsController {
   };
 
   fillAppsToDB = async (req = request, res = response) => {
+    const categories = await sequelize.models.Categories.findAll();
+
     for (let index = 1; index <= 50; index++) {
       await sequelize.models.Apps.create({
         appname: `App ${index}`,
@@ -61,17 +64,16 @@ class AppsController {
         developer: `Developer ${index}`,
         price: Math.random(),
         installed: Math.random() > 0.5,
-        category: this.categoryRamdom(),
+        category: this.categoryRamdom(categories),
       });
     }
 
     res.json({ ok: true });
   };
 
-  categoryRamdom = () => {
-    const categories = ["Games", "Music", "Movies", "Books", "Apps"];
+  categoryRamdom = (categories) => {
     const index = Math.floor(Math.random() * categories.length);
-    return categories[index];
+    return categories[index].category;
   };
 }
 

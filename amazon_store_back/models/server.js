@@ -7,6 +7,7 @@ const config = require("../config/config");
 const ratingRouter = require("../routes/ratings");
 const downloadRouter = require("../routes/downloads");
 const screenshotsRouter = require("../routes/screenshots");
+const categoriesRouter = require("../routes/categories");
 
 class Server {
   constructor() {
@@ -17,6 +18,7 @@ class Server {
     this.ratingPath = "/api/ratings";
     this.downloadsPath = "/api/downloads";
     this.screenshotsPath = "/api/screenshots";
+    this.categoriesPath = "/api/categories";
 
     // Middlewares
     this.middlewares();
@@ -37,6 +39,7 @@ class Server {
     this.app.use(this.ratingPath, ratingRouter);
     this.app.use(this.downloadsPath, downloadRouter);
     this.app.use(this.screenshotsPath, screenshotsRouter);
+    this.app.use(this.categoriesPath, categoriesRouter);
   }
 
   listen() {

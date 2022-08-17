@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./SelectCategory.css";
 
-const categories = ["All", "Games", "Music", "Movies", "Books", "Apps"];
+const urlCategories = "http://localhost:8080/api/categories";
 
 export const SelectCategory = ({ setCategory }) => {
+  const [categories, setCategories] = useState([{ category: "All" }]);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const cats = await fetch(urlCategories);
+      const jsonCats = await cats.json();
+      setCategories([{ category: "All" }, ...jsonCats.categories]);
+    };
+
+    getCategories();
+  }, []);
+
   const handleChange = (e) => {
     setCategory(e.target.value);
   };
@@ -17,7 +29,7 @@ export const SelectCategory = ({ setCategory }) => {
         aria-label="Default select example"
       >
         {categories.map((category) => (
-          <option key={category}>{category}</option>
+          <option key={category.category}>{category.category}</option>
         ))}
       </select>
     </form>
