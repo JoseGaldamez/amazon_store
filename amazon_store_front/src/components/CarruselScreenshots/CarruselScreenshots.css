@@ -1,0 +1,9 @@
+
+.carousel-control-next, .carousel-control-prev{
+    background-color: transparent;
+    border: none;
+}
+
+.carousel-control-next:hover, .carousel-control-prev:hover{
+    background-color: rgba(0,0,0,0.5);
+}

@@ -1,0 +1,13 @@
+.black-bg{
+    background-color: black;
+}
+
+footer{
+    background-color: #333;
+    color: #CCC;
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+    height: 100px;
+    margin-top: 200px;
+}

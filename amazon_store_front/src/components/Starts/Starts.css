@@ -1,0 +1,29 @@
+.starts{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-bottom: solid 1px #ebebeb;
+}
+
+.center{
+    justify-content: center;
+    padding: 10px 20px;
+}
+
+.left{
+    justify-content: flex-start;
+    padding-bottom: 5px;
+}
+
+.starts svg{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+
+.starts .starts-number{
+    padding-left: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color:green;
+}

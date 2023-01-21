@@ -1,0 +1,74 @@
+
+.app-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 9999;
+}
+
+.app-modal .app-info{
+    width: 96%;
+    max-width: 450px;
+    margin: 5vh auto;
+    height: 90vh;
+    background-color: white;
+    overflow-y: scroll;
+
+}
+
+.app-modal .app-info .container{
+    border-bottom: solid 1px #f1f1f1;
+}
+
+.app_info_spacing{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.app-icon{
+    width: 100%;
+    padding: 10px;
+}
+
+.app-info__modal{
+    width: 100%;
+    padding: 15px;
+}
+
+.app-info__modal h4{
+    font-size: 1.1rem;
+    margin: 0px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.app-info__modal h5{
+    font-size: 0.9rem;
+    margin: 0px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.app-info__modal small{
+    font-size: 0.8rem;
+    color: #8e8e8e;
+}
+
+.app-info__modal p{
+    font-size: 0.8rem;
+    margin: 0px;
+}
+
+.app-info__footer{
+    border-top: solid 1px #f1f1f1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.app-info__footer button{
+    margin: 15px 5px;
+}

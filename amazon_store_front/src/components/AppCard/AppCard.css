@@ -1,0 +1,41 @@
+
+.app-card{
+    border: solid 1px #ddd;
+    background-color: white;
+    transition: all ease 0.3s;
+    cursor: pointer;
+}
+
+.app-card:hover{
+    background-color: orange;
+    color: white;
+    border-radius: 5px;
+}
+
+.app-card .app-card__image{
+    width: 100%;
+    height: auto;
+    padding: 5px;
+}
+
+.app-card .app-card__image img{
+    width: 100%;
+}
+.app-card .app-card__info{
+    padding: 5px;
+}
+
+.app-card__info___price{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.app-card .app-card__info h3{
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0px;
+}
+.app-card .app-card__info small{
+    display: block;
+    margin-bottom: 5px;
+}
